@@ -207,7 +207,7 @@ void Game::set_background_color(int r, int g, int b, int a)
     }
 }
 
-bool Game::add_scene(Scene & scene)
+bool Game::add_scene(VisualNovelScene & scene)
 {
     auto id = scene.name();
     INFO("Add scene " << id);

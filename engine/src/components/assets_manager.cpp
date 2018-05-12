@@ -103,7 +103,7 @@ std::string AssetsManager::load_text(std::string path, bool use_base){
         if(input.is_open()){
             while(!input.eof()){
                 getline(input, data);
-                text+= data + '\n';
+                text+= data;
             }
         }
         input.close();

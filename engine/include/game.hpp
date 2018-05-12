@@ -6,7 +6,7 @@
 #include <utility>
 #include "assets_manager.hpp"
 #include "input.hpp"
-#include "scene.hpp"
+#include "vn_scene.hpp"
 #include "sdl2include.h"
 #include "timer.hpp"
 
@@ -35,7 +35,7 @@ public:
     void run();
     void set_background_color(int r, int g, int b, int a);
 
-    bool add_scene(Scene & scene);
+    bool add_scene(VisualNovelScene & scene);
     bool change_scene(const std::string & id);
 
     inline std::pair<int, int> window_size() { return m_window_size; }
@@ -62,9 +62,9 @@ private:
     SDL_Renderer * m_canvas;
     SDL_Color      m_background_color;
 
-    std::unordered_map<std::string, Scene *> m_scenes;
-    Scene * m_scene;       // Current Scene
-    Scene * m_last_scene;  // Last Scene Played
+    std::unordered_map<std::string, VisualNovelScene *> m_scenes;
+    VisualNovelScene * m_scene;       // Current Scene
+    VisualNovelScene * m_last_scene;  // Last Scene Playedz
 
     Timer m_timer;
     unsigned int m_elapsed_time;

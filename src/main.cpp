@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include "scene.hpp"
+#include "vn_scene.hpp"
 #include "gameobject.hpp"
 #include "components/image.hpp"
 #include "components/text.hpp"
@@ -17,7 +18,7 @@ int main(int, char**)
     Game::instance.set_properties(globals::game_name, globals::window_size);
 
     // Setup scenes
-    Scene menu("Main Menu");
+    VisualNovelScene menu("Main Menu");
 
     auto title = GameObject("Title", 3, 0);
     auto box = GameObject("Box", 2, 0);
@@ -41,15 +42,15 @@ int main(int, char**)
     auto person = ImageComponent("phoenix.png");
 
     title.add_component(title_text);
-    title.add_component(bg_music);
+    box.add_component(bg_music);
     box.add_component(text_box);
     bg.add_component(background);
     npc.add_component(person);
 
-    menu.add_game_object(title);
+    menu.add_text(title);
     menu.add_game_object(box);
-    menu.add_game_object(bg);
-    menu.add_game_object(npc);
+    menu.add_background(bg);
+    menu.add_character(npc);
 
     Game::instance.add_scene(menu);
 
