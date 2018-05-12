@@ -37,8 +37,8 @@ bool TextComponent::init()
 
     if (m_high_quality && bg_color.a == 0x00)
     {
-        surface = TTF_RenderText_Blended(
-            m_font, m_text.c_str(), color
+        surface = TTF_RenderText_Blended_Wrapped(
+            m_font, m_text.c_str(), color, 700
         );
     }
     else if (m_high_quality)
