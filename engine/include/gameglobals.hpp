@@ -7,7 +7,7 @@
 namespace globals {
 
     const std::string game_name = "Visual Novel";
-    const std::pair<int, int> window_size(800, 640);
+    const std::pair<int, int> window_size(1024, 640);
 
 }
 
