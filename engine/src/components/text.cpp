@@ -27,7 +27,6 @@ bool TextComponent::init()
     m_text = Game::instance.assets_manager().load_text(m_text_path);
 
     if(m_font == NULL) return false;
-    if(m_text.empty()) return false;
 
     SDL_Color color = {m_color.r, m_color.g, m_color.b, m_color.a};
     SDL_Color bg_color = {m_background_color.r, m_background_color.g,
@@ -35,28 +34,13 @@ bool TextComponent::init()
 
     SDL_Surface * surface = NULL;
 
-    if (m_high_quality && bg_color.a == 0x00)
-    {
-        surface = TTF_RenderText_Blended_Wrapped(
-            m_font, m_text.c_str(), color, 700
-        );
-    }
-    else if (m_high_quality)
-    {
-        surface = TTF_RenderText_Shaded(
-            m_font, m_text.c_str(), color, bg_color
-        );
-    }
-    else
-    {
-        surface = TTF_RenderText_Solid(
-            m_font, m_text.c_str(), color
-        );
-    }
+    surface = TTF_RenderUTF8_Blended_Wrapped(
+        m_font, m_text["0"].c_str(), color, 500
+    );
 
     if(surface == NULL)
     {
-        SDL_TTF_ERROR("Could not render text " << m_text << " with font "
+        SDL_TTF_ERROR("Could not render text " << m_text["0"] << " with font "
                       << m_font_path);
         return false;
     }

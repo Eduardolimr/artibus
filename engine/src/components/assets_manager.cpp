@@ -91,9 +91,12 @@ Image * AssetsManager::load_image(std::string path, bool use_base)
     return m_images[path];
 }
 
-std::string AssetsManager::load_text(std::string path, bool use_base){
+std::map<std::string, std::string> AssetsManager::load_text(std::string path, bool use_base){
     std::string data;
     std::string text = "";
+    int num_breaks = 0;
+    int num_line = -1;
+
     if(use_base)
         path = m_base_path + "text/" + path;
 
@@ -102,15 +105,28 @@ std::string AssetsManager::load_text(std::string path, bool use_base){
         input.open(path);
         if(input.is_open()){
             while(!input.eof()){
-                getline(input, data);
-                text+= data;
+                while(num_breaks < 3){
+                    if(num_breaks >=3){
+                        num_breaks = 0;
+                    }
+                    getline(input, data);
+                    text += data;
+                    ++num_breaks;
+                    if(num_breaks < 3){
+                        text += '\n';
+                    }
+                }
+                num_line++;
+                INFO(text);
+                INFO(std::to_string(num_line))
+                m_text.insert(std::pair<std::string, std::string>(std::to_string(num_line), text));
+                text = "";
             }
         }
         input.close();
-        INFO(text);
-        m_text[path] = text;
     }
-    return m_text[path];
+    INFO(m_text["0"]);
+    return m_text;
 }
 
 TTF_Font * AssetsManager::load_font(std::string path, int size, bool use_base)

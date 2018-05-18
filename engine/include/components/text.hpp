@@ -3,6 +3,7 @@
 
 #include <string>
 #include <utility>
+#include <map>
 
 #include "sdl2include.h"
 
@@ -19,7 +20,7 @@ namespace engine{
             int          font_size=42,
             Color        color=Color(),
             Color        background_color=Color(0x0, 0x0, 0x0, 0x00)
-        ) : Component(), m_text(""), m_text_path(text_path),
+        ) : Component(), m_text_path(text_path),
             m_font_path(font_path), m_font_size(font_size), m_color(color),
             m_background_color(background_color), m_texture(NULL), m_font(NULL),
             m_w(0), m_h(0) {}
@@ -34,7 +35,8 @@ namespace engine{
         inline void disable_high_quality() { m_high_quality = false; }
 
     protected:
-        std::string m_text;
+        std::map<std::string, std::string> m_text;
+
         std::string m_text_path;
         std::string m_font_path;
         int         m_font_size;
