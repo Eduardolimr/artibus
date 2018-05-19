@@ -105,10 +105,10 @@ std::map<std::string, std::string> AssetsManager::load_text(std::string path, bo
         input.open(path);
         if(input.is_open()){
             while(!input.eof()){
+                if(num_breaks >=3){
+                    num_breaks = 0;
+                }
                 while(num_breaks < 3){
-                    if(num_breaks >=3){
-                        num_breaks = 0;
-                    }
                     getline(input, data);
                     text += data;
                     ++num_breaks;
