@@ -87,14 +87,15 @@ void TextComponent::draw()
 
 
 bool TextComponent::next_line(int num){
+    auto text = get_line(num);
+    if(text == ""){
+        return false;
+    }
     SDL_DestroyTexture(m_texture);
     m_texture = NULL;
     SDL_Surface * surface = NULL;
 
-
     SDL_Color color = {m_color.r, m_color.g, m_color.b, m_color.a};
-
-    auto text = get_line(num);
     surface = TTF_RenderUTF8_Blended_Wrapped(
         m_font, text.c_str(), color, 500
     );
