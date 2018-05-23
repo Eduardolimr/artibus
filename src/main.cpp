@@ -2,6 +2,7 @@
 #include "scene.hpp"
 #include "vn_scene.hpp"
 #include "gameobject.hpp"
+#include "vn_actions.hpp"
 #include "components/image.hpp"
 #include "components/text.hpp"
 #include "components/animation.hpp"
@@ -20,17 +21,17 @@ int main(int, char**)
     // Setup scenes
     VisualNovelScene menu("Main Menu");
 
-    auto title = GameObject("Title", 3, 0);
+    auto text = GameObject("Title", 3, 0);
     auto box = GameObject("Box", 2, 0);
     auto bg = GameObject("Background", 0, 0);
     auto npc = GameObject("NPC", 1, 0);
 
-    title.set_position(40, 490);
+    text.set_position(40, 490);
     box.set_position(0, 470);
     bg.set_position(0,0);
-    npc.set_position(90, 200);
+    npc.set_position(90, 175);
 
-    auto title_text = TextComponent("test.txt", "font.ttf", 30,
+    auto scene_text = TextComponent("test.txt", "font.ttf", 30,
                                     Color(0x00, 0x00, 0x00));
 
     auto bg_music = AudioComponent("music.ogg", true);
@@ -39,15 +40,19 @@ int main(int, char**)
     
     auto background = ImageComponent("stand.png");
 
-    auto person = ImageComponent("phoenix.png");
+    auto person = ImageComponent("junko.png");
 
-    title.add_component(title_text);
-    box.add_component(bg_music);
+    Action action;
+
+
+    text.add_component(action);
+    text.add_component(scene_text);
+    box.add_component(bg_music); 
     box.add_component(text_box);
     bg.add_component(background);
     npc.add_component(person);
 
-    menu.add_text(title);
+    menu.add_text(text);
     menu.add_game_object(box);
     menu.add_background(bg);
     menu.add_character(npc);

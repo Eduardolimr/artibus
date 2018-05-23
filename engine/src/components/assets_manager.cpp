@@ -115,10 +115,10 @@ std::map<std::string, std::string> AssetsManager::load_text(std::string path, bo
                     if(num_breaks < 3){
                         text += '\n';
                     }
+                    data = "";
                 }
                 num_line++;
-                INFO(text);
-                INFO(std::to_string(num_line))
+                INFO(std::to_string(num_line));
                 m_text.insert(std::pair<std::string, std::string>(std::to_string(num_line), text));
                 text = "";
             }

@@ -33,7 +33,8 @@ namespace engine{
 
         inline void enable_high_quality()  { m_high_quality = true; }
         inline void disable_high_quality() { m_high_quality = false; }
-
+        std::string get_line(int num);
+        bool next_line(int num);
     protected:
         std::map<std::string, std::string> m_text;
 

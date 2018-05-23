@@ -1,5 +1,4 @@
-Linha 1 lalalalalalala
-Linha 2 junko did nothing wrong
-Linha 3 lalalalalalala
-Linha 4 pupupupupupupu
-Linha 5 nagito did everything wrong
+Here's a list of things I did wrong:
+Nothing.
+Also,
+This is the second dialog.

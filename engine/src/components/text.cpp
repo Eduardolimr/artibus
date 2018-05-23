@@ -29,18 +29,17 @@ bool TextComponent::init()
     if(m_font == NULL) return false;
 
     SDL_Color color = {m_color.r, m_color.g, m_color.b, m_color.a};
-    SDL_Color bg_color = {m_background_color.r, m_background_color.g,
-                          m_background_color.b, m_background_color.a};
 
     SDL_Surface * surface = NULL;
 
+    auto text = get_line(0);
     surface = TTF_RenderUTF8_Blended_Wrapped(
-        m_font, m_text["0"].c_str(), color, 500
+        m_font, text.c_str(), color, 500
     );
 
     if(surface == NULL)
     {
-        SDL_TTF_ERROR("Could not render text " << m_text["0"] << " with font "
+        SDL_TTF_ERROR("Could not render text " << text << " with font "
                       << m_font_path);
         return false;
     }
@@ -86,3 +85,49 @@ void TextComponent::draw()
     SDL_RenderCopy(Game::instance.canvas(), m_texture, NULL, &renderQuad);
 }
 
+
+bool TextComponent::next_line(int num){
+    SDL_DestroyTexture(m_texture);
+    m_texture = NULL;
+    SDL_Surface * surface = NULL;
+
+
+    SDL_Color color = {m_color.r, m_color.g, m_color.b, m_color.a};
+
+    auto text = get_line(num);
+    surface = TTF_RenderUTF8_Blended_Wrapped(
+        m_font, text.c_str(), color, 500
+    );
+
+    if(surface == NULL)
+    {
+        SDL_TTF_ERROR("Could not render text " << text << " with font "
+                      << m_font_path);
+        return false;
+    }
+
+    m_texture = SDL_CreateTextureFromSurface(Game::instance.canvas(), surface);
+
+    if (m_texture == NULL)
+    {
+        SDL_ERROR("Could not create texture from rendered text surface!");
+        return false;
+    }
+
+    m_w = surface->w;
+    m_h = surface->h;
+
+    SDL_FreeSurface(surface);
+
+    return true;
+}
+
+std::string TextComponent::get_line(int num){
+    if(m_text.find(std::to_string(num)) != m_text.end()){
+        auto text = m_text[std::to_string(num)];
+        return text;
+    }
+    else{
+        return "";
+    }
+}
