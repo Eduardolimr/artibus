@@ -34,7 +34,7 @@ bool TextComponent::init()
 
     auto text = get_line(0);
     surface = TTF_RenderUTF8_Blended_Wrapped(
-        m_font, text.c_str(), color, 500
+        m_font, text.c_str(), color, m_size
     );
 
     if(surface == NULL)
@@ -97,7 +97,7 @@ bool TextComponent::next_line(int num){
 
     SDL_Color color = {m_color.r, m_color.g, m_color.b, m_color.a};
     surface = TTF_RenderUTF8_Blended_Wrapped(
-        m_font, text.c_str(), color, 500
+        m_font, text.c_str(), color, m_size
     );
 
     if(surface == NULL)

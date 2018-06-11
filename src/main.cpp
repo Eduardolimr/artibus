@@ -21,44 +21,54 @@ int main(int, char**)
     // Setup scenes
     VisualNovelScene menu("Main Menu");
 
-    auto text = GameObject("Title", 3, 0);
+    auto text = GameObject("Text", 3, 0);
     auto box = GameObject("Box", 2, 0);
-    auto bg = GameObject("Background", 0, 0);
     auto npc = GameObject("NPC", 1, 0);
+    auto bg = GameObject("Background", 0, 0);
 
-    text.set_position(40, 490);
-    box.set_position(0, 470);
+    text.set_position(150, 200);
+    box.set_position(0, 0);
     bg.set_position(0,0);
     npc.set_position(90, 175);
 
-    auto scene_text = TextComponent("test.txt", "font.ttf", 30,
-                                    Color(0x00, 0x00, 0x00));
+    auto scene_text = TextComponent("intro.txt", "font.ttf", 30,
+                                    Color(0x00, 0x00, 0x00), 500);
 
-    auto bg_music = AudioComponent("music.ogg", true);
+    auto bg_music = AudioComponent("introsong.mp3", true);
 
-    auto text_box = ImageComponent("text_box.png");
+    auto text_box = ImageComponent("CaixaTextoRamiewDescricaoGde.png");
     
     auto background = ImageComponent("stand.png");
 
-    auto person = ImageComponent("junko.png");
-
     Action action;
-
 
     text.add_component(action);
     text.add_component(scene_text);
     box.add_component(bg_music); 
     box.add_component(text_box);
     bg.add_component(background);
-    npc.add_component(person);
 
     menu.add_text(text);
     menu.add_game_object(box);
     menu.add_background(bg);
     menu.add_character(npc);
 
-    Game::instance.add_scene(menu);
 
+    VisualNovelScene teste("1");
+
+    auto test_text = GameObject("Text", 1, 0);
+
+    test_text.set_position(40, 490);
+
+    auto scene_test_text = TextComponent("outra.txt", "font.ttf", 30,
+                                    Color(0x00, 0x00, 0x00));
+
+    test_text.add_component(scene_test_text);
+
+    teste.add_text(test_text);
+
+    Game::instance.add_scene(menu);
+    Game::instance.add_scene(teste);
     // Game loop
     Game::instance.run();
 

@@ -14,6 +14,7 @@ public:
     Action(): Component(){}
 
     int current = 1;
+    bool is_over;
 
     virtual ~Action() {};
 
@@ -26,6 +27,12 @@ public:
             if(text->next_line(current)){
                 current++;
             }
+            else{
+                is_over = true;
+            }
+        }
+        if(is_over){
+            engine::Game::instance.change_scene("1");
         }
     }
 };

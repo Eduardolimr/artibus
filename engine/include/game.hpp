@@ -2,7 +2,7 @@
 #define __ENGINE_GAME__
 
 #include <string>
-#include <unordered_map>
+#include <map>
 #include <utility>
 #include "assets_manager.hpp"
 #include "input.hpp"
@@ -62,7 +62,7 @@ private:
     SDL_Renderer * m_canvas;
     SDL_Color      m_background_color;
 
-    std::unordered_map<std::string, VisualNovelScene *> m_scenes;
+    std::map<std::string, VisualNovelScene *> m_scenes;
     VisualNovelScene * m_scene;       // Current Scene
     VisualNovelScene * m_last_scene;  // Last Scene Playedz
 

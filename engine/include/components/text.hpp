@@ -19,10 +19,12 @@ namespace engine{
             std::string  font_path="",
             int          font_size=42,
             Color        color=Color(),
-            Color        background_color=Color(0x0, 0x0, 0x0, 0x00)
+            Color        background_color=Color(0x0, 0x0, 0x0, 0x00),
+            int          size = 700
         ) : Component(), m_text_path(text_path),
             m_font_path(font_path), m_font_size(font_size), m_color(color),
-            m_background_color(background_color), m_texture(NULL), m_font(NULL),
+            m_background_color(background_color), m_size(size),
+            m_texture(NULL), m_font(NULL),
             m_w(0), m_h(0) {}
 
         virtual ~TextComponent() {}
@@ -44,7 +46,7 @@ namespace engine{
         bool        m_high_quality;
         Color       m_color;
         Color       m_background_color;
-
+        int         m_size;
         SDL_Texture * m_texture;
         TTF_Font    * m_font;
 
