@@ -6,6 +6,7 @@
 #include <utility>
 #include "assets_manager.hpp"
 #include "input.hpp"
+#include "scene_setup.hpp"
 #include "vn_scene.hpp"
 #include "sdl2include.h"
 #include "timer.hpp"
@@ -45,7 +46,7 @@ public:
 
     inline unsigned int elapsed_time() { return m_elapsed_time; }
     inline double elapsed_time_seconds() { return m_elapsed_time / 1000.0; }
-
+    inline const SceneSetup & scene_setup() const { return m_scene_setup; }
 private:
     Game()
         : m_name(DEFAULT_GAME_NAME), m_window_size(DEFAULT_WINDOW_SIZE),
@@ -70,7 +71,8 @@ private:
     unsigned int m_elapsed_time;
 
     InputManager m_input_manager;
-
+    SceneSetup m_scene_setup;
+    
     bool create_window();
     bool destroy_window();
 
