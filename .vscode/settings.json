@@ -30,6 +30,12 @@
         "type_traits": "cpp",
         "typeinfo": "cpp",
         "utility": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "vector": "cpp",
+        "numeric": "cpp",
+        "sstream": "cpp",
+        "cinttypes": "cpp"
     }
 }

@@ -7,7 +7,7 @@
 #include <map>
 
 #include "sdl2include.h"
-
+namespace engine {
 typedef struct scene_paths{
     int id;
 
@@ -17,11 +17,12 @@ typedef struct scene_paths{
     std::pair<int, int> button_path;
 }scene_paths;
 
-namespace engine {
-
 class SceneSetup {
 public:
     SceneSetup();
+    SceneSetup(int a){
+        create_scenes();
+    }
 
     std::map<std::string, scene_paths> m_paths;
 private:

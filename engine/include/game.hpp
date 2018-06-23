@@ -37,6 +37,7 @@ public:
     void set_background_color(int r, int g, int b, int a);
 
     bool add_scene(VisualNovelScene & scene);
+    bool add_scenes(SceneSetup scene_setup);
     bool change_scene(const std::string & id);
 
     inline std::pair<int, int> window_size() { return m_window_size; }
@@ -52,7 +53,8 @@ private:
         : m_name(DEFAULT_GAME_NAME), m_window_size(DEFAULT_WINDOW_SIZE),
           m_state(State::created), m_window(NULL), m_canvas(NULL),
           m_background_color({0xff, 0xff, 0xff, 0xff}),
-          m_scene(NULL), m_last_scene(NULL), m_elapsed_time(0) {}
+          m_scene(NULL), m_last_scene(NULL), m_elapsed_time(0),
+          m_scene_setup(0) {}
 
     std::string         m_name;
     std::pair<int, int> m_window_size;

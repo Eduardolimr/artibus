@@ -1,4 +1,7 @@
 #include  "game.hpp"
+#include "components/image.hpp"
+#include "components/text.hpp"
+#include "components/audio.hpp"
 #include "log.h"
 #include "sdl_log.h"
 
@@ -205,6 +208,49 @@ void Game::set_background_color(int r, int g, int b, int a)
                                m_background_color.r, m_background_color.b,
                                m_background_color.g, m_background_color.a);
     }
+}
+
+bool Game::add_scenes(SceneSetup scene_setup){
+    for(auto scene_path: scene_setup.m_paths){
+        auto scene = scene_path.second;
+
+        VisualNovelScene vn_scene(std::to_string(scene.id));
+
+        auto text = GameObject("Text", 3, 0);
+        auto box = GameObject("Box", 2, 0);
+        auto npc = GameObject("NPC", 1, 0);
+        auto bg = GameObject("Background", 0, 0);
+
+        text.set_position(150, 200);
+        box.set_position(0, 0);
+        bg.set_position(0,0);
+        npc.set_position(90, 175);
+
+        auto scene_text = TextComponent(scene.text_path, "font.ttf", 30,
+                                        Color(0x00, 0x00, 0x00), 700);
+
+        auto bg_music = AudioComponent(scene.sound_path, true);
+
+        auto text_box = ImageComponent(scene.image_path[0]);
+        
+        auto background = ImageComponent(scene.image_path[1]);
+
+
+        text.add_component(scene_text);
+        box.add_component(bg_music); 
+        box.add_component(text_box);
+        bg.add_component(background);
+
+        vn_scene.add_text(text);
+        vn_scene.add_game_object(box);
+        vn_scene.add_background(bg);
+        vn_scene.add_character(npc);
+
+        add_scene(vn_scene);
+
+    }
+    return true;
+
 }
 
 bool Game::add_scene(VisualNovelScene & scene)

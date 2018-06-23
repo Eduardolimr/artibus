@@ -14,7 +14,7 @@ public:
     Action(): Component(){}
 
     int current = 1;
-    bool is_over;
+    bool is_over = false;
 
     virtual ~Action() {};
 
