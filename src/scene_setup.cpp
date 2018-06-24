@@ -60,6 +60,7 @@ void SceneSetup::create_scenes(){
                         m_paths.insert(std::to_string(paths.id), paths);
                         //m_paths[std::to_string(paths.id)] =  paths;
                         cont = 0;
+                        break;
                 }
             }
         }
