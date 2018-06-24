@@ -23,8 +23,9 @@ public:
     SceneSetup(int a){
         create_scenes();
     }
+	bool IsEmpty();
 
-    std::map<std::string, scene_paths> m_paths;
+    std::map<int, scene_paths> m_paths;
 private:
     void create_scenes();
 };

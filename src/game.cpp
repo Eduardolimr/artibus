@@ -137,6 +137,10 @@ void Game::run()
         INFO("Start game loop");
         m_state = State::main_loop;
 
+		if(m_scene_setup.IsEmpty()){
+			std::cerr<< "Scene stetup empty!" << "\n";
+		}
+		add_scenes(m_scene_setup);
         if (m_scene == NULL)
         {
             WARN("No scenes to run!");
