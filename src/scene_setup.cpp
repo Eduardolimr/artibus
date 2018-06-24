@@ -61,9 +61,9 @@ void SceneSetup::create_scenes(){
                     paths.button_path.first = atoi(data.c_str());
                     getline(input, data);
                     paths.button_path.second = atoi(data.c_str());
-//                        m_paths.insert(std::to_string(paths.id), paths);
+                        m_paths.insert(std::pair<int, scene_paths>(paths.id, paths));
 					std::cerr << "SceneSetup adicionado no m_paths" << "\n";
-                    m_paths[paths.id] =  paths;
+//                    m_paths[paths.id] =  paths;
                     cont = 0;
                     break;
                 }
