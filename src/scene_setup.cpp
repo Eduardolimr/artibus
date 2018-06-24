@@ -32,19 +32,21 @@ void SceneSetup::create_scenes(){
                     case 0:
                         paths.id = atoi(data.c_str());
                         cont++;
+                        break;
                     case 1:
                         paths.text_path = data;
                         cont++;
                         break;
                     case 2:
-			std::cout<<paths.id<<"\n";
-			std::cout<<data<<"\n";
-			paths.image_path.emplace(paths.image_path.begin(), data);
-//                        paths.image_path[0] = data;
+                        std::cout<<paths.id<<"\n";
+                        std::cout<<data<<"\n";
+                        paths.image_path.emplace(paths.image_path.begin(), data);
                         cont++;
                         break;
                     case 3:
-                        paths.image_path[1] = data;
+                        std::cout<<paths.id<<"\n";
+                        std::cout<<data<<"\n";
+                        paths.image_path.emplace(paths.image_path.begin()+1, data);
                         cont++;
                         break;
                     case 4:
@@ -55,8 +57,8 @@ void SceneSetup::create_scenes(){
                         paths.button_path.first = atoi(data.c_str());
                         getline(input, data);
                         paths.button_path.second = atoi(data.c_str());
-//                        m_paths.insert(std::to_string(paths.id), paths);
-                        m_paths[std::to_string(paths.id)]=  paths;
+                        m_paths.insert(std::to_string(paths.id), paths);
+                        //m_paths[std::to_string(paths.id)] =  paths;
                         cont = 0;
                 }
             }

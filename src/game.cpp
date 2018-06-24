@@ -246,7 +246,7 @@ bool Game::add_scenes(SceneSetup scene_setup){
         vn_scene.add_background(bg);
         vn_scene.add_character(npc);
 
-        add_scene(vn_scene);
+        Game::instance.add_scene(vn_scene);
 
     }
     return true;
