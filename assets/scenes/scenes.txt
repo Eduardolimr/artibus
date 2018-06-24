@@ -1,7 +1,0 @@
-1
-intro.txt
-IdJogos_ExpressoesNPC_Dagoberto_Sprite_sheet.png
-CaixaTextoRamiewDescricaoGde.png
-introstory.mp3
-2
-3

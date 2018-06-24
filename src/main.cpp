@@ -3,11 +3,11 @@
 #include "gameobject.hpp"
 #include "vn_actions.hpp"
 #include "gameglobals.hpp"
-#include "components/image.hpp"
-#include "components/text.hpp"
-#include "components/animation.hpp"
-#include "components/animation_controller.hpp"
-#include "components/audio.hpp"
+#include "image.hpp"
+#include "text.hpp"
+#include "animation.hpp"
+#include "animation_controller.hpp"
+#include "audio.hpp"
 
 using namespace engine;
 

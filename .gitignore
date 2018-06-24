@@ -2,6 +2,8 @@
 # Created by https://www.gitignore.io/api/vim,macos,c++,cmake
 
 build
+dep/
+JOGO
 
 ### C++ ###
 # Prerequisites
