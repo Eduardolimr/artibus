@@ -16,7 +16,7 @@ bool ImageComponent::init()
         return false;
     }
 
-    auto image = Game::instance.assets_manager().load_image(m_path);
+    auto image = Game::GetInstance().assets_manager().load_image(m_path);
 
     m_texture = image->texture;
     m_w = image->w;
@@ -46,7 +46,7 @@ void ImageComponent::draw()
 {
     update_canvas_rect();
 
-    SDL_RenderCopy(Game::instance.canvas(), m_texture,
+    SDL_RenderCopy(Game::GetInstance().canvas(), m_texture,
                    &m_image_rect, &m_canvas_rect);
 }
 

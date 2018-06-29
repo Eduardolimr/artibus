@@ -11,13 +11,13 @@ bool AudioComponent::init(){
     INFO("Initializing audio component");
 
     if(m_is_music){
-        m_music = Game::instance.assets_manager().load_music(m_path);
+        m_music = Game::GetInstance().assets_manager().load_music(m_path);
         if(m_music == NULL){
             return false;
         }
     }
     else{
-        m_sound = Game::instance.assets_manager().load_sound(m_path);
+        m_sound = Game::GetInstance().assets_manager().load_sound(m_path);
         if(m_sound == NULL){
             return false;
         }

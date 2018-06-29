@@ -270,7 +270,8 @@ bool VisualNovelScene::init()
 
     for (auto id_obj: m_vn_objects.m_background)
     {
-        auto obj = id_obj.second;
+        GameObject* obj = id_obj.second;
+		std::cout<< obj->name() << "\n";
         if (obj->init() == false)
         {
             WARN("Could not init game object " << obj->name());
@@ -279,7 +280,7 @@ bool VisualNovelScene::init()
     }
     for (auto id_obj: m_vn_objects.m_character)
     {
-        auto obj = id_obj.second;
+        GameObject* obj = id_obj.second;
         if (obj->init() == false)
         {
             WARN("Could not init game object " << obj->name());

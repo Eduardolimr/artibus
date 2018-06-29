@@ -13,14 +13,14 @@ public:
     void update()
     {
         auto dx = 0;
-        if(engine::Game::instance.input_manager().is_button_down("a")) {
+        if(engine::Game::GetInstance().input_manager().is_button_down("a")) {
             dx = -1;
         }
-        if(engine::Game::instance.input_manager().is_button_down("d")) {
+        if(engine::Game::GetInstance().input_manager().is_button_down("d")) {
             dx = 1;
         }
         dx = m_game_object->x + dx;
-        if (dx >= engine::Game::instance.window_size().first || dx < 0)
+        if (dx >= engine::Game::GetInstance().window_size().first || dx < 0)
         {
             dx = 0;
         }

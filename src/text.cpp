@@ -23,8 +23,8 @@ bool TextComponent::init()
         return false;
     }
 
-    m_font = Game::instance.assets_manager().load_font(m_font_path, m_font_size);
-    m_text = Game::instance.assets_manager().load_text(m_text_path);
+    m_font = Game::GetInstance().assets_manager().load_font(m_font_path, m_font_size);
+    m_text = Game::GetInstance().assets_manager().load_text(m_text_path);
 
     if(m_font == NULL) return false;
 
@@ -44,7 +44,7 @@ bool TextComponent::init()
         return false;
     }
 
-    m_texture = SDL_CreateTextureFromSurface(Game::instance.canvas(), surface);
+    m_texture = SDL_CreateTextureFromSurface(Game::GetInstance().canvas(), surface);
 
     if (m_texture == NULL)
     {
@@ -82,7 +82,7 @@ void TextComponent::draw()
         m_w,
         m_h
     };
-    SDL_RenderCopy(Game::instance.canvas(), m_texture, NULL, &renderQuad);
+    SDL_RenderCopy(Game::GetInstance().canvas(), m_texture, NULL, &renderQuad);
 }
 
 
@@ -107,7 +107,7 @@ bool TextComponent::next_line(int num){
         return false;
     }
 
-    m_texture = SDL_CreateTextureFromSurface(Game::instance.canvas(), surface);
+    m_texture = SDL_CreateTextureFromSurface(Game::GetInstance().canvas(), surface);
 
     if (m_texture == NULL)
     {

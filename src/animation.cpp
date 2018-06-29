@@ -66,7 +66,7 @@ void AnimationComponent::draw()
 {
     m_finished = false;
 
-    m_playing_duration += Game::instance.elapsed_time();
+    m_playing_duration += Game::GetInstance().elapsed_time();
 
     if (m_playing_duration >= m_duration) {
         m_finished = true;

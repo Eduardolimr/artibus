@@ -39,7 +39,7 @@ public:
     void run();
     void set_background_color(int r, int g, int b, int a);
 
-    bool add_scene(VisualNovelScene & scene);
+    bool add_scene(VisualNovelScene *scene);
     bool add_scenes(SceneSetup scene_setup);
     bool change_scene(const std::string & id);
 

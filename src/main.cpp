@@ -14,10 +14,10 @@ using namespace engine;
 int main(int, char**)
 {
     // Configure game
-//    Game::instance.set_properties(globals::game_name, globals::window_size);
+//    Game::GetInstance().set_properties(globals::game_name, globals::window_size);
 
     // Game loop
-    Game::instance.run();
+    Game::GetInstance().run();
 
     return 0;
 }

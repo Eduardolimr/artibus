@@ -23,7 +23,7 @@ public:
 
     void update(){
         auto text = m_game_object->get_component<engine::TextComponent>();
-        if(engine::Game::instance.input_manager().is_button_down("z")) {
+        if(engine::Game::GetInstance().input_manager().is_button_down("z")) {
             if(text->next_line(current)){
                 current++;
             }
@@ -32,7 +32,7 @@ public:
             }
         }
         if(is_over){
-            engine::Game::instance.change_scene("1");
+            engine::Game::GetInstance().change_scene("1");
         }
     }
 };

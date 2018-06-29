@@ -8,7 +8,7 @@
 
 using namespace engine;
 
-Game Game::instance;
+//Game Game::GetInstance();
 
 //void Game::set_properties(std::string name, std::pair<int, int> window_size,
 //                          unsigned int fps)
@@ -218,7 +218,7 @@ bool Game::add_scenes(SceneSetup scene_setup){
     for(auto scene_path: scene_setup.m_paths){
         auto scene = scene_path.second;
 
-        VisualNovelScene vn_scene(std::to_string(scene.id));
+        VisualNovelScene * vn_scene= new VisualNovelScene(std::to_string(scene.id));
 
         auto text = GameObject("Text", 3, 0);
         auto box = GameObject("Box", 2, 0);
@@ -245,21 +245,21 @@ bool Game::add_scenes(SceneSetup scene_setup){
         box.add_component(text_box);
         bg.add_component(background);
 
-        vn_scene.add_text(text);
-        vn_scene.add_game_object(box);
-        vn_scene.add_background(bg);
-        vn_scene.add_character(npc);
+        vn_scene->add_text(text);
+        vn_scene->add_game_object(box);
+        vn_scene->add_background(bg);
+        vn_scene->add_character(npc);
 
-        Game::instance.add_scene(vn_scene);
+        Game::GetInstance().add_scene(vn_scene);
 
     }
     return true;
 
 }
 
-bool Game::add_scene(VisualNovelScene & scene)
+bool Game::add_scene(VisualNovelScene * scene)
 {
-    auto id = scene.name();
+    std::string id = scene->name();
     INFO("Add scene " << id);
 
     if (m_scenes.find(id) != m_scenes.end())
@@ -268,9 +268,9 @@ bool Game::add_scene(VisualNovelScene & scene)
         return false;
     }
 
-    m_scenes[id] = &scene;
+    m_scenes[id] = scene;
 
-    if (m_scene == NULL) m_scene = &scene;
+    if (m_scene == NULL) m_scene = scene;
 
     return true;
 }
@@ -302,6 +302,19 @@ bool Game::handle_scene_changes()
         }
         else
         {
+			if(NULL == m_last_scene){
+				std::cout << "teste memoria1\n ";
+			}
+			else{
+				std::cout<< m_last_scene->name();
+			}
+			if(NULL == m_scene){
+				std::cout << "teste memoria2\n ";
+			}
+			else{
+				std::cout<< m_scene->name();
+			}
+			
             INFO("Scenes changing from " <<
                  (m_last_scene ? m_last_scene->name() : "NULL") << " to " <<
                  m_scene->name() << "...");

@@ -15,7 +15,7 @@ public:
 
     void update()
     {
-        if(engine::Game::instance.input_manager().is_button_down("w")) {
+        if(engine::Game::GetInstance().input_manager().is_button_down("w")) {
             INFO("W is down");
         }
 
@@ -24,7 +24,7 @@ public:
 
         dx = m_game_object->x + dx;
 
-        if (dx >= engine::Game::instance.window_size().first || dx < 0)
+        if (dx >= engine::Game::GetInstance().window_size().first || dx < 0)
         {
             right = !right;
         }

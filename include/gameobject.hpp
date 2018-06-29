@@ -24,8 +24,8 @@ public:
     GameObject(std::string name,
                unsigned int layer=0, unsigned int layer_order=0,
                State state=State::enabled)
-         : x(0), y(0), w(0), h(0), rotation(0), m_name(name),
-           m_state(state), m_parent(NULL), m_layer(layer),
+         : x(0), y(0), w(0), h(0), rotation(0), m_parent(NULL), m_name(name),
+           m_state(state), m_layer(layer),
            m_layer_order(layer_order) {}
 
     virtual ~GameObject() {}

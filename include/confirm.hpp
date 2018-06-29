@@ -11,7 +11,7 @@ public:
     Confirm() : engine::CodeComponent() {}
 
     void update(){
-        if(engine::Game::instance.input_manager().is_button_down("z")){
+        if(engine::Game::GetInstance().input_manager().is_button_down("z")){
         }
     }
 };

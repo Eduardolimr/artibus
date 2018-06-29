@@ -69,7 +69,7 @@ Image * AssetsManager::load_image(std::string path, bool use_base)
             return NULL;
         }
 
-        auto m_texture = SDL_CreateTextureFromSurface(Game::instance.canvas(),
+        auto m_texture = SDL_CreateTextureFromSurface(Game::GetInstance().canvas(),
                                                       image);
 
         if (m_texture == NULL)
