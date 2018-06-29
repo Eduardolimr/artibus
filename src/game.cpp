@@ -10,13 +10,13 @@ using namespace engine;
 
 Game Game::instance;
 
-void Game::set_properties(std::string name, std::pair<int, int> window_size,
-                          unsigned int fps)
-{
-    m_name = name;
-    m_window_size = window_size;
-    m_fps = fps;
-}
+//void Game::set_properties(std::string name, std::pair<int, int> window_size,
+//                          unsigned int fps)
+//{
+//    m_name = name;
+//    m_window_size = window_size;
+//    m_fps = fps;
+//}
 
 bool setup_sdl()
 {

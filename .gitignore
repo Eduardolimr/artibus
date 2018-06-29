@@ -4,6 +4,7 @@
 build
 dep/
 JOGO
+*.user
 
 ### C++ ###
 # Prerequisites

@@ -20,8 +20,8 @@ typedef struct scene_paths{
 class SceneSetup {
 public:
     SceneSetup();
-    SceneSetup(int a){
-        create_scenes();
+    SceneSetup(int a): SceneSetup(){
+//        create_scenes();
     }
 	bool IsEmpty();
 

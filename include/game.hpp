@@ -13,8 +13,8 @@
 
 namespace engine {
 
-static const std::string DEFAULT_GAME_NAME = "Game";
-static const std::pair<int, int> DEFAULT_WINDOW_SIZE(100, 100);
+#define DEFAULT_GAME_NAME "Game"
+#define DEFAULT_WINDOW_SIZE std::pair<int,int>(100,100)
 
 class Game {
 public:
@@ -28,7 +28,10 @@ public:
         shutdown
     };
 
-    static Game instance;
+	static Game& GetInstance(void){
+		static Game instance;
+		return instance;
+	};
 
     void set_properties(std::string name, std::pair<int, int> window_size,
                         unsigned int fps=60);
@@ -50,7 +53,7 @@ public:
     inline const SceneSetup & scene_setup() const { return m_scene_setup; }
 private:
     Game()
-        : m_name(DEFAULT_GAME_NAME), m_window_size(DEFAULT_WINDOW_SIZE),
+        : m_name(DEFAULT_GAME_NAME), m_window_size(DEFAULT_WINDOW_SIZE), m_fps(60),
           m_state(State::created), m_window(NULL), m_canvas(NULL),
           m_background_color({0xff, 0xff, 0xff, 0xff}),
           m_scene(NULL), m_last_scene(NULL), m_elapsed_time(0),
